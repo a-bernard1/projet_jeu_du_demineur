@@ -32,7 +32,7 @@ public class Accueil {
         
 
         JButton jouer = new JButton("Jouer");
-        ControleurPageJeu controleur = new ControleurPageJeu(fenetre, globalJPanel, cl);
+        ControleurPageJeu controleur = new ControleurPageJeu(globalJPanel, cl);
         jouer.addActionListener(controleur);
         JButton reprendre = new JButton("Reprendre");
         JButton quitter = new JButton("Quitter");
