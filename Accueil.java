@@ -1,4 +1,5 @@
 import java.awt.BorderLayout;
+import java.awt.CardLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 
@@ -8,7 +9,6 @@ import javax.swing.JPanel;
 import javax.swing.*;
 
 public class Accueil {
-    public JPanel panneau;
 
     public Accueil() {
         JFrame fenetre = new JFrame();
@@ -16,30 +16,44 @@ public class Accueil {
         fenetre.setLocation(100, 100);
         fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        JPanel boutons = new JPanel();
-        boutons.setLayout(new GridLayout(3, 1));
-        boutons.setPreferredSize(new Dimension(200, 150));
 
-        JPanel testJPanel = new JPanel();
+        CardLayout cl = new CardLayout();
+        JPanel globalJPanel = new JPanel(cl);
+
+
+        JPanel panelAccueil = new JPanel();
+        panelAccueil.setLayout(new GridLayout(3, 1));
+        panelAccueil.setPreferredSize(new Dimension(200, 150));
+
+
+        JPanel testJPanelPage = new JPanel();
         JLabel testJLabel = new JLabel("TEST");
-        testJPanel.add(testJLabel);
+        testJPanelPage.add(testJLabel);
         
-        
+
         JButton jouer = new JButton("Jouer");
-        ControleurPageJeu controleur = new ControleurPageJeu(fenetre, testJPanel);
+        ControleurPageJeu controleur = new ControleurPageJeu(fenetre, globalJPanel, cl);
         jouer.addActionListener(controleur);
-        boutons.add(jouer);
-
-
         JButton reprendre = new JButton("Reprendre");
-        boutons.add(reprendre);
         JButton quitter = new JButton("Quitter");
-        boutons.add(quitter);
 
-        panneau = new JPanel();
-        panneau.setLayout(new BorderLayout());
-        panneau.add(boutons, BorderLayout.CENTER);
-        fenetre.add(panneau, BorderLayout.CENTER);
+
+        panelAccueil.add(reprendre);
+        panelAccueil.add(jouer);
+        panelAccueil.add(quitter);
+
+
+
+
+        globalJPanel.add(panelAccueil, "MENU");
+        globalJPanel.add(testJPanelPage, "TEST");
+
+        cl.show(globalJPanel, "MENU");
+
+
+
+
+        fenetre.add(globalJPanel, BorderLayout.CENTER);
 
         fenetre.setVisible(true);
     }
