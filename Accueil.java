@@ -26,10 +26,14 @@ public class Accueil {
      
         Jeu pageJeu = new Jeu();
         JButton jouer = new JButton("Jouer");
-        ControleurPageJeu controleur = new ControleurPageJeu(fenetre, pageJeu.getFrame());
-        jouer.addActionListener(controleur);
+        ControleurPageJeu controleurJeu = new ControleurPageJeu(fenetre, pageJeu.getFrame());
+        jouer.addActionListener(controleurJeu);
+
         JButton reprendre = new JButton("Reprendre");
+
         JButton quitter = new JButton("Quitter");
+        ControleurQuitter controleurQuitter = new ControleurQuitter();
+        quitter.addActionListener(controleurQuitter);
 
 
         panelAccueil.add(reprendre);
