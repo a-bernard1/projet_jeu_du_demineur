@@ -28,20 +28,17 @@ Accueil.class : Accueil.java
 Case.class : Case.java
 	${JC} Case.java
 
-ControleurPageJeu.class : ControleurPageJeu.java
-	${JC} ControleurPageJeu.java
-
 Jeu.class : Jeu.java
 	${JC} Jeu.java
-
-ControleurQuitter.class : ControleurQuitter.java
-	${JC} ControleurQuitter.java
 
 Taille.class : Taille.java
 	${JC} Taille.java
 
 ControleurPageTaille.class : ControleurPageTaille.java
 	${JC} ControleurPageTaille.java
+
+ControleurAccueil.class : ControleurAccueil.java	
+	${JC} ControleurAccueil.java
 
 # Lancer le programme
 # On précise le "classpath" (le point .) pour dire à Java de chercher ici
