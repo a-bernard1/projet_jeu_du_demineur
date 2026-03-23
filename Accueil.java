@@ -24,9 +24,9 @@ public class Accueil {
 
 
      
-        Jeu pageJeu = new Jeu();
+        Taille pageTaille = new Taille();
         JButton jouer = new JButton("Jouer");
-        ControleurPageJeu controleurJeu = new ControleurPageJeu(fenetre, pageJeu.getFrame());
+        ControleurPageJeu controleurJeu = new ControleurPageJeu(fenetre, pageTaille.getFrame());
         jouer.addActionListener(controleurJeu);
 
         JButton reprendre = new JButton("Reprendre");

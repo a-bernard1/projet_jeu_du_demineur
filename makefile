@@ -10,7 +10,9 @@ OFILES = Main.class \
          Case.class \
          ControleurPageJeu.class \
 		 ControleurQuitter.class \
-         Jeu.class
+         Jeu.class \
+		 Taille.class \
+		 ControleurPageTaille.class
 
 # Règle par défaut
 but : ${OFILES}
@@ -34,6 +36,12 @@ Jeu.class : Jeu.java
 
 ControleurQuitter.class : ControleurQuitter.java
 	${JC} ControleurQuitter.java
+
+Taille.class : Taille.java
+	${JC} Taille.java
+
+ControleurPageTaille.class : ControleurPageTaille.java
+	${JC} ControleurPageTaille.java
 
 # Lancer le programme
 # On précise le "classpath" (le point .) pour dire à Java de chercher ici

@@ -5,18 +5,16 @@ import javax.swing.JFrame;
 
 public class Jeu{
     private JFrame fenetre = new JFrame();
-    private int taille =6;
 
-    public  Jeu(){
+    public  Jeu(int lignes, int colones){
         fenetre.setSize(500, 500);
         fenetre.setLocation(100, 100);
         fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        GridLayout gestionnaire = new GridLayout(taille, taille);
-        fenetre.setLayout(gestionnaire);
+        fenetre.setLayout(new GridLayout(lignes, colones));
 
-        for(int i=0; i<taille; i++){
-            for(int j=0; j<taille; j++){
+        for(int i=0; i<lignes; i++){
+            for(int j=0; j<colones; j++){
                 Case dcase = new Case();
                 dcase.setOpaque(true);
                 dcase.setBackground(Color.WHITE);
