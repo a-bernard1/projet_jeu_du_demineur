@@ -26,13 +26,13 @@ public class Accueil {
      
         Taille pageTaille = new Taille();
         JButton jouer = new JButton("Jouer");
-        ControleurPageJeu controleurJeu = new ControleurPageJeu(fenetre, pageTaille.getFrame());
+        ControleurAccueil controleurJeu = new ControleurAccueil(fenetre, pageTaille.getFrame(), "JOUER");
         jouer.addActionListener(controleurJeu);
 
         JButton reprendre = new JButton("Reprendre");
 
         JButton quitter = new JButton("Quitter");
-        ControleurQuitter controleurQuitter = new ControleurQuitter();
+        ControleurAccueil controleurQuitter = new ControleurAccueil(fenetre, fenetre, "QUITTER");
         quitter.addActionListener(controleurQuitter);
 
 
