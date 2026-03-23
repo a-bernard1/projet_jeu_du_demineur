@@ -2,7 +2,6 @@ import java.awt.Color;
 import java.awt.GridLayout;
 
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 
 public class Jeu{
     private JFrame fenetre = new JFrame();
