@@ -10,7 +10,7 @@ public class Accueil {
 
     public Accueil() {
         JFrame fenetre = new JFrame();
-        fenetre.setSize(500, 500);
+        fenetre.setSize(configFenetre.LARGEUR, configFenetre.HAUTEUR);
         fenetre.setLocation(100, 100);
         fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
