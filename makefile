@@ -8,11 +8,12 @@ MAIN_CLASS = Main
 OFILES = Main.class \
          Accueil.class \
          Case.class \
-         ControleurPageJeu.class \
-		 ControleurQuitter.class \
          Jeu.class \
 		 Taille.class \
-		 ControleurPageTaille.class
+		 ControleurPageTaille.class \
+		 ControleurAccueil.class \
+		 configFenetre.class \
+		 PlacementMines.class
 
 # Règle par défaut
 but : ${OFILES}
@@ -39,6 +40,12 @@ ControleurPageTaille.class : ControleurPageTaille.java
 
 ControleurAccueil.class : ControleurAccueil.java	
 	${JC} ControleurAccueil.java
+
+configFenetre.class : configFenetre.java
+	${JC} configFenetre.java
+
+PlacementMines.class : PlacementMines.java
+	${JC} PlacementMines.java
 
 # Lancer le programme
 # On précise le "classpath" (le point .) pour dire à Java de chercher ici
