@@ -6,19 +6,47 @@ import javax.swing.JFrame;
 public class Jeu{
     private JFrame fenetre = new JFrame();
     private int nbMines;
+    private Grille grille;
 
     public  Jeu(int lignes, int colonnes){
         fenetre.setSize(configFenetre.LARGEUR, configFenetre.HAUTEUR);
         fenetre.setLocation(100, 100);
         fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        fenetre.setLayout(new GridLayout(lignes, colonnes));
+
         //nmMines mis en dur juste pour tester 
+        nbMines = (lignes*colonnes)/4;
+
+        grille =  new Grille(lignes, colonnes);
+        grille.placement(nbMines);
+
+        Case cases[][] = new Case[lignes][colonnes];
+        
+        for(int i=0; i<lignes; i++){
+            for(int j=0; j<colonnes; j++){
+                Case c = new Case();
+                c.x = i;
+                c.y = j;
+
+                if(grille.getEtatCase(i, j).estMine()){
+                    c.setBackground(Color.RED);
+                } else {
+                    c.setBackground(Color.WHITE);
+                }
+
+                cases[i][j] = c;
+                fenetre.add(c);
+            }
+        }
+
+        /*//nmMines mis en dur juste pour tester 
         nbMines = (lignes*colonnes)/4;
 
         fenetre.setLayout(new GridLayout(lignes, colonnes));
 
         PlacementMines placementMines = new PlacementMines(nbMines, lignes, colonnes, fenetre);
-        placementMines.placement();
+        placementMines.placement();*/
     }
 
     public JFrame getFrame(){
