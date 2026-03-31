@@ -1,5 +1,4 @@
 public class Grille{
-    private int nbMines;
     private int nbLignes;
     private int nbColonnes;
     private etatCase grille[][];
@@ -29,7 +28,7 @@ public class Grille{
         System.out.println("");
     }
 
-    public etatCase getEtatCase(int i, int j){
-        return grille[i][j];
+    public etatCase[][] getEtatCase(){
+        return grille;
     }
 }

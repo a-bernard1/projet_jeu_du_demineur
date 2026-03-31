@@ -1,6 +1,5 @@
 public class compteurMines {
     etatCase grilleEtat[][];
-    Case grilleCase[][];
     int lignes;
     int colonnes;
 
@@ -10,24 +9,29 @@ public class compteurMines {
         this.colonnes = colonnes;
     }
 
-    public Case[][] compteurMinesAutour(){
+    public void calculer(){
         for(int i=0; i<lignes; i++){
             for(int j=0; j<colonnes; j++){
+
                 if(grilleEtat[i][j].estMine()){
+
                     for(int a=-1; a<=1; a++){
                         for(int b=-1; b<=1; b++){
-                            if(i+a<0 || j+b<0){
-                                System.out.println("a");
-                            }else{
-                                grilleCase[i+a][j+b].nbMinesAutour +=1;
-                                grilleCase[i+a][j+b].setText(Integer.toString(grilleCase[i+a][j+b].nbMinesAutour));
+
+                            int ni = i+a;
+                            int nj = j+b;
+
+                            if(a==0&&b==0){}
+
+                            if(ni>=0 && ni <lignes && nj>=0 && nj < colonnes){
+                                if(!grilleEtat[ni][nj].estMine()){
+                                    grilleEtat[ni][nj].incrNbMines();;
+                                }
                             }
                         }
                     }
                 }
-            }
-            
+            }   
         }
-        return grilleCase;
     }
 }

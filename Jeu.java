@@ -22,31 +22,27 @@ public class Jeu{
         grille.placement(nbMines);
 
         Case cases[][] = new Case[lignes][colonnes];
-        
+
+        compteurMines compt = new compteurMines(grille.getEtatCase(), lignes, colonnes);
+        compt.calculer();
+
         for(int i=0; i<lignes; i++){
             for(int j=0; j<colonnes; j++){
                 Case c = new Case();
                 c.x = i;
                 c.y = j;
 
-                if(grille.getEtatCase(i, j).estMine()){
+                if(grille.getEtatCase()[i][j].estMine()){
                     c.setBackground(Color.RED);
                 } else {
-                    c.setBackground(Color.WHITE);
+                    int nbM = grille.getEtatCase()[i][j].nbMines();
+                    c.setText(Integer.toString(nbM));
                 }
 
                 cases[i][j] = c;
                 fenetre.add(c);
             }
         }
-
-        /*//nmMines mis en dur juste pour tester 
-        nbMines = (lignes*colonnes)/4;
-
-        fenetre.setLayout(new GridLayout(lignes, colonnes));
-
-        PlacementMines placementMines = new PlacementMines(nbMines, lignes, colonnes, fenetre);
-        placementMines.placement();*/
     }
 
     public JFrame getFrame(){

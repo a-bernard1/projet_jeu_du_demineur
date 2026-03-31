@@ -10,7 +10,11 @@ public class etatCase{
         _estMine = b;
     }
 
-    public int minesAutour(){
+    public int nbMines(){
         return _nbMinesAutour;
+    }
+
+    public void incrNbMines(){
+        _nbMinesAutour++;
     }
 }
