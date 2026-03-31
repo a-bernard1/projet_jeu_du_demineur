@@ -14,7 +14,8 @@ OFILES = Main.class \
 		 ControleurAccueil.class \
 		 configFenetre.class \
 		 Grille.class \
-		 etatCase.class
+		 etatCase.class \
+		 ControleurValider.class
 
 # Règle par défaut
 but : ${OFILES}
@@ -49,6 +50,9 @@ Grille.class : configFenetre.java
 	${JC} configFenetre.java
 
 etatCase.class : configFenetre.java
+	${JC} configFenetre.java
+
+ControleurValider.class : configFenetre.java
 	${JC} configFenetre.java
 
 # Lancer le programme
