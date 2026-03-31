@@ -1,6 +1,4 @@
-import java.awt.BorderLayout;
 import java.awt.*;
-import javax.swing.*;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -17,23 +15,43 @@ public class Taille {
         fenetre.setLocation(100, 100);
         fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        JLabel labelNbLigne = new JLabel("4", JLabel.CENTER);  
+        JLabel labelNbColonne = new JLabel("4", JLabel.CENTER);
+
+
         JPanel panelTaille = new JPanel();
         panelTaille.setLayout(new GridLayout(5, 1));
 
-        JLabel labelLigne = new JLabel("Nombre de ligne (max 30):");
-        JSpinner spinnerLigne = new JSpinner(new SpinnerNumberModel(4, 4, 30, 1));
+        JLabel labelLigne = new JLabel("Nombre de ligne (min 4, max 30):", JLabel.CENTER);
+        JPanel panelLigne = new JPanel();
+        JButton moinsLigne = new JButton("-");
+        JButton plusLigne = new JButton("+");
+        ControleurPageTaille controleurLigne = new ControleurPageTaille(moinsLigne, plusLigne, labelNbLigne);
+        moinsLigne.addActionListener(controleurLigne);
+        plusLigne.addActionListener(controleurLigne);
+        panelLigne.add(moinsLigne);
+        panelLigne.add(labelNbLigne);
+        panelLigne.add(plusLigne);
 
-        JLabel labelColone = new JLabel("Nombre de colone (max 30):");
-        JSpinner spinnerColone = new JSpinner(new SpinnerNumberModel(4, 4, 30, 1));
+        JLabel labelColonne = new JLabel("Nombre de colone (min 4, max 30):", JLabel.CENTER);
+        JPanel panelColonne= new JPanel();
+        JButton moinsColonne = new JButton("-");
+        JButton plusColonne = new JButton("+");
+        ControleurPageTaille controleurColonne = new ControleurPageTaille(moinsColonne, plusColonne, labelNbColonne);
+        moinsColonne.addActionListener(controleurColonne);
+        plusColonne.addActionListener(controleurColonne);
+        panelColonne.add(moinsColonne);
+        panelColonne.add(labelNbColonne);
+        panelColonne.add(plusColonne);
 
         JButton btnValider = new JButton("Valider");
-        ControleurPageTaille controleurTaille = new ControleurPageTaille(fenetre, spinnerLigne, spinnerColone);
-        btnValider.addActionListener(controleurTaille);
+        ControleurPageTaille Valider = new ControleurPageTaille(fenetre, labelNbLigne, labelNbColonne);
+        btnValider.addActionListener(Valider);
             
         panelTaille.add(labelLigne);
-        panelTaille.add(spinnerLigne);
-        panelTaille.add(labelColone);
-        panelTaille.add(spinnerColone);
+        panelTaille.add(panelLigne);
+        panelTaille.add(labelColonne);
+        panelTaille.add(panelColonne);
         panelTaille.add(btnValider);
 
         fenetre.add(panelTaille, BorderLayout.CENTER);
