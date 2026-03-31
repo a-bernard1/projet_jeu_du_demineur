@@ -45,8 +45,8 @@ public class Taille {
         panelColonne.add(plusColonne);
 
         JButton btnValider = new JButton("Valider");
-        ControleurPageTaille Valider = new ControleurPageTaille(fenetre, labelNbLigne, labelNbColonne);
-        btnValider.addActionListener(Valider);
+        ControleurValider controleurValider = new ControleurValider(fenetre, labelNbLigne, labelNbColonne);
+        btnValider.addActionListener(controleurValider);
             
         panelTaille.add(labelLigne);
         panelTaille.add(panelLigne);
