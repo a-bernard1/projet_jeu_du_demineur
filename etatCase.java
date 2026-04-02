@@ -1,6 +1,8 @@
 public class etatCase{
     private boolean _estMine;
     private int _nbMinesAutour;
+    private boolean estMarquee;
+    private boolean estRevelee;
 
     public boolean estMine(){
         return _estMine;
@@ -16,5 +18,21 @@ public class etatCase{
 
     public void incrNbMines(){
         _nbMinesAutour++;
+    }
+
+    public void reveler(){
+        if(!estMarquee){
+            estRevelee=true;
+        }
+    }
+
+    public boolean estRevelee(){
+        return estRevelee;
+    }
+
+    public void marquer(){
+        if(!estRevelee){
+            estMarquee=true;
+        }
     }
 }
