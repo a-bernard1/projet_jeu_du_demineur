@@ -29,16 +29,12 @@ public class Jeu{
         for(int i=0; i<lignes; i++){
             for(int j=0; j<colonnes; j++){
                 Case c = new Case();
+                ControleurCase controleurCase = new ControleurCase(grille, cases, i, j);
+                c.addActionListener(controleurCase);
                 c.x = i;
                 c.y = j;
 
-                if(grille.getEtatCase()[i][j].estMine()){
-                    c.setBackground(Color.RED);
-                } else {
-                    int nbM = grille.getEtatCase()[i][j].nbMines();
-                    c.setText(Integer.toString(nbM));
-                }
-
+                c.setBackground(Color.GRAY);
                 cases[i][j] = c;
                 fenetre.add(c);
             }
