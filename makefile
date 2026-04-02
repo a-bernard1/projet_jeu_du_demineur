@@ -15,7 +15,8 @@ OFILES = Main.class \
 		 configFenetre.class \
 		 Grille.class \
 		 etatCase.class \
-		 ControleurValider.class
+		 ControleurValider.class \
+		 ControleurCase.class
 
 # Règle par défaut
 but : ${OFILES}
@@ -54,6 +55,9 @@ etatCase.class : configFenetre.java
 
 ControleurValider.class : configFenetre.java
 	${JC} configFenetre.java
+
+ControleurCase.class : ControleurCase.java
+	${JC} ControleurCase.java
 
 # Lancer le programme
 # On précise le "classpath" (le point .) pour dire à Java de chercher ici
