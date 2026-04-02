@@ -16,7 +16,7 @@ OFILES = Main.class \
 		 Grille.class \
 		 etatCase.class \
 		 ControleurValider.class \
-		 ControleurCase.class
+		 ControleurCase.class \
 
 # Règle par défaut
 but : ${OFILES}
