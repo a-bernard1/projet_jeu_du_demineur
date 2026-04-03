@@ -25,7 +25,7 @@ public class compteurMines {
 
                             if(ni>=0 && ni <lignes && nj>=0 && nj < colonnes){
                                 if(!grilleEtat[ni][nj].estMine()){
-                                    grilleEtat[ni][nj].incrNbMines();;
+                                    grilleEtat[ni][nj].incrNbMines();
                                 }
                             }
                         }
