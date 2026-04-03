@@ -16,10 +16,10 @@ public class Jeu{
         fenetre.setLayout(new GridLayout(lignes, colonnes));
 
         //nmMines mis en dur juste pour tester 
-        nbMines = (lignes*colonnes)/4;
+        nbMines = (lignes*colonnes)/10;
 
-        grille =  new Grille(lignes, colonnes);
-        grille.placement(nbMines);
+        grille =  new Grille(lignes, colonnes, nbMines);
+        grille.placement();
 
         Case cases[][] = new Case[lignes][colonnes];
 
