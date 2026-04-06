@@ -1,9 +1,9 @@
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.*;
 
 public class Accueil {
@@ -15,30 +15,32 @@ public class Accueil {
         fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 
-        JPanel globalJPanel = new JPanel();
+        JPanel globalJPanel = new JPanel(new GridBagLayout());
 
 
         JPanel panelAccueil = new JPanel();
-        panelAccueil.setLayout(new GridLayout(3, 1));
-        panelAccueil.setPreferredSize(new Dimension(200, 150));
+        panelAccueil.setLayout(new GridLayout(3, 1, 0, 15));
 
 
-     
         Taille pageTaille = new Taille();
-        JButton jouer = new JButton("Jouer");
+
+        JButton btnjouer = new JButton("Jouer");
         ControleurAccueil controleurJeu = new ControleurAccueil(fenetre, pageTaille.getFrame(), "JOUER");
-        jouer.addActionListener(controleurJeu);
+        btnjouer.addActionListener(controleurJeu);
+        btnjouer.setPreferredSize(new Dimension(200, 50));
 
-        JButton reprendre = new JButton("Reprendre");
+        JButton btnreprendre = new JButton("Reprendre");
+        btnreprendre.setPreferredSize(new Dimension(200, 50));
 
-        JButton quitter = new JButton("Quitter");
+        JButton btnquitter = new JButton("Quitter");
         ControleurAccueil controleurQuitter = new ControleurAccueil(fenetre, fenetre, "QUITTER");
-        quitter.addActionListener(controleurQuitter);
+        btnquitter.addActionListener(controleurQuitter);
+        btnquitter.setPreferredSize(new Dimension(200, 50));
 
 
-        panelAccueil.add(reprendre);
-        panelAccueil.add(jouer);
-        panelAccueil.add(quitter);
+        panelAccueil.add(btnjouer);
+        panelAccueil.add(btnreprendre);
+        panelAccueil.add(btnquitter);
 
         globalJPanel.add(panelAccueil);
 
