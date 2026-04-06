@@ -5,18 +5,15 @@ import javax.swing.JFrame;
 
 public class Jeu{
     private JFrame fenetre = new JFrame();
-    private int nbMines;
     private Grille grille;
 
-    public  Jeu(int lignes, int colonnes){
+    public  Jeu(int lignes, int colonnes, int nbMines){
         fenetre.setSize(configFenetre.LARGEUR, configFenetre.HAUTEUR);
         fenetre.setLocation(100, 100);
         fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         fenetre.setLayout(new GridLayout(lignes, colonnes));
 
-        //nmMines mis en dur juste pour tester 
-        nbMines = (lignes*colonnes)/10;
 
         grille =  new Grille(lignes, colonnes, nbMines);
         grille.placement();
