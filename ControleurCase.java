@@ -17,7 +17,7 @@ public class ControleurCase implements ActionListener{
     public void actionPerformed(ActionEvent e){
         grille.montrer(x, y);
         rafraichir();
-    };
+    }
 
     private void rafraichir(){
         for(int i=0; i<cases.length; i++){
