@@ -17,6 +17,9 @@ OFILES = Main.class \
 		 etatCase.class \
 		 ControleurValider.class \
 		 ControleurCase.class \
+		 configTaille.class \
+		 fenetreResultat.class \
+		 compteurMines.class
 
 # Règle par défaut
 but : ${OFILES}
@@ -49,16 +52,22 @@ configFenetre.class : configFenetre.java
 
 Grille.class : configFenetre.java
 	${JC} configFenetre.java
-
 etatCase.class : configFenetre.java
 	${JC} configFenetre.java
-
 ControleurValider.class : configFenetre.java
 	${JC} configFenetre.java
 
 ControleurCase.class : ControleurCase.java
 	${JC} ControleurCase.java
 
+configTaille.class : ControleurCase.java
+	${JC} ControleurCase.java
+
+fenetreResultat.class : ControleurCase.java
+	${JC} ControleurCase.java
+
+compteurMines.class : ControleurCase.java
+	${JC} ControleurCase.java
 # Lancer le programme
 # On précise le "classpath" (le point .) pour dire à Java de chercher ici
 run : but
