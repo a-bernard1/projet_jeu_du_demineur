@@ -36,6 +36,7 @@ public class Grille{
     public etatCase[][] getEtatCase(){
         return grille;
     }
+    
 
     public void montrer(int i, int j){
         if(i<0 || i>=nbLignes || j<0 || j>=nbColonnes){return;}
@@ -43,27 +44,20 @@ public class Grille{
         etatCase c = grille[i][j];
 
         if(c.estRevelee()){
-            if(nbCaseSafe==nbLignes*nbColonnes-nbMines){
-                System.out.println("GAGNÉ !!!!!!!!");
-                System.exit(0);
-            }
             return;
         }
         c.reveler();
 
         if(c.estMine()){
-            System.out.println("PERDU !!!!!!!!");
-            System.exit(0);
+            fenetreResultat.afficher("Perdu", true);
+            return;
         }
         
         if(c.nbMines()>0){
-            System.out.println(c.nbMines());
             nbCaseSafe++;
-            System.out.println("1 -- nbCaseSafe = " + nbCaseSafe + " nbMine = " + nbMines);
             if(nbCaseSafe==nbLignes*nbColonnes-nbMines){
-                System.out.println("GAGNÉ !!!!!!!!");
-                System.exit(0);
-            }else{System.out.println("2 -- nbCaseSafe = " + nbCaseSafe + " nbMine = " + nbMines);}
+                fenetreResultat.afficher("Gagne", true);
+            }
         }else{
             for(int a = -1; a<=1; a++){
                 for(int b=-1; b<=1; b++){
@@ -78,8 +72,7 @@ public class Grille{
             }
         }
         if(nbCaseSafe==nbLignes*nbColonnes-nbMines){
-            System.out.println("GAGNÉ !!!!!!!!");
-            System.exit(0);
+            fenetreResultat.afficher("Gagne", true);
         }
     }
 }
