@@ -1,9 +1,9 @@
 public class compteurMines {
-    etatCase grilleEtat[][];
+    EtatCase grilleEtat[][];
     int lignes;
     int colonnes;
 
-    public compteurMines(etatCase grilleEtat[][], int lignes, int colonnes){
+    public compteurMines(EtatCase grilleEtat[][], int lignes, int colonnes){
         this.grilleEtat = grilleEtat;
         this.lignes = lignes;
         this.colonnes = colonnes;

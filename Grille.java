@@ -1,20 +1,20 @@
 public class Grille{
     private int nbLignes;
     private int nbColonnes;
-    private etatCase grille[][];
+    private EtatCase grille[][];
     private int nbCaseSafe;
     private int nbMines;
 
     public Grille(int nbLignes, int nbColonnes, int nbMines){
         this.nbLignes = nbLignes;
         this.nbColonnes = nbColonnes;
-        this.grille = new etatCase[nbLignes][nbColonnes];
+        this.grille = new EtatCase[nbLignes][nbColonnes];
         this.nbCaseSafe = 0;
         this.nbMines = nbMines;
     
         for(int i=0; i<nbLignes; i++){
             for(int j=0; j<nbColonnes; j++){
-                grille[i][j] = new etatCase();
+                grille[i][j] = new EtatCase();
             }
         }
     }
@@ -33,14 +33,14 @@ public class Grille{
         System.out.println("");
     }
 
-    public etatCase[][] getEtatCase(){
+    public EtatCase[][] getEtatCase(){
         return grille;
     }
     
 
     public void montrer(int i, int j){
         if(i<0 || i>=nbLignes || j<0 || j>=nbColonnes){return;}
-        etatCase c = grille[i][j];
+        EtatCase c = grille[i][j];
 
         if(c.estRevelee()){
             return;
@@ -69,7 +69,7 @@ public class Grille{
     public boolean aGagne(){
         for(int i=0; i<nbLignes; i++){
             for(int j=0; j<nbColonnes; j++){
-                etatCase c = grille[i][j];
+                EtatCase c = grille[i][j];
                 if(!c.estMine() && !c.estRevelee()){
                     return false;
                 }

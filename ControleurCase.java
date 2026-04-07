@@ -25,7 +25,7 @@ public class ControleurCase implements ActionListener{
     private void rafraichir(){
         for(int i=0; i<cases.length; i++){
             for(int j=0; j<cases[0].length; j++){
-                etatCase e = grille.getEtatCase()[i][j];
+                EtatCase e = grille.getEtatCase()[i][j];
                 Case c = cases[i][j];
 
                 if(e.estRevelee()){
