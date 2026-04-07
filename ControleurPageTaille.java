@@ -2,8 +2,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
-import java.awt.*;
-
 public class ControleurPageTaille implements ActionListener {
     private JButton btnMoins;
     private JButton btnPlus;

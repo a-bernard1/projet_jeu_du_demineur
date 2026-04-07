@@ -9,7 +9,7 @@ public class Main{
 
         }
 
-        boolean play=true;
+        //boolean play=true;
 
         Accueil accueil = new Accueil();
 

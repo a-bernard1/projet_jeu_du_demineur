@@ -2,14 +2,12 @@ public class Grille{
     private int nbLignes;
     private int nbColonnes;
     private EtatCase grille[][];
-    private int nbCaseSafe;
     private int nbMines;
 
     public Grille(int nbLignes, int nbColonnes, int nbMines){
         this.nbLignes = nbLignes;
         this.nbColonnes = nbColonnes;
         this.grille = new EtatCase[nbLignes][nbColonnes];
-        this.nbCaseSafe = 0;
         this.nbMines = nbMines;
     
         for(int i=0; i<nbLignes; i++){
