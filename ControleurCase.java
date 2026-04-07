@@ -16,6 +16,9 @@ public class ControleurCase implements ActionListener{
 
     public void actionPerformed(ActionEvent e){
         grille.montrer(x, y);
+        if(grille.aGagne()){
+            fenetreResultat.afficher("Gagne", true);
+        }
         rafraichir();
     }
 
