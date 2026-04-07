@@ -1,4 +1,4 @@
-public class etatCase{
+public class EtatCase{
     private boolean _estMine;
     private int _nbMinesAutour;
     private boolean estMarquee;
