@@ -40,7 +40,6 @@ public class Grille{
 
     public void montrer(int i, int j){
         if(i<0 || i>=nbLignes || j<0 || j>=nbColonnes){return;}
-        
         etatCase c = grille[i][j];
 
         if(c.estRevelee()){
@@ -50,14 +49,9 @@ public class Grille{
 
         if(c.estMine()){
             fenetreResultat.afficher("Perdu", true);
-            return;
-        }
+        }else 
         
         if(c.nbMines()>0){
-            nbCaseSafe++;
-            if(nbCaseSafe==nbLignes*nbColonnes-nbMines){
-                fenetreResultat.afficher("Gagne", true);
-            }
         }else{
             for(int a = -1; a<=1; a++){
                 for(int b=-1; b<=1; b++){
@@ -65,14 +59,22 @@ public class Grille{
                     if(a==0&&b==0){}
 
                     if(a!=0 || b!=0){
-                        nbCaseSafe++;
                         montrer(i+a, j+b);
                     }
                 }
             }
         }
-        if(nbCaseSafe==nbLignes*nbColonnes-nbMines){
-            fenetreResultat.afficher("Gagne", true);
+    }
+
+    public boolean aGagne(){
+        for(int i=0; i<nbLignes; i++){
+            for(int j=0; j<nbColonnes; j++){
+                etatCase c = grille[i][j];
+                if(!c.estMine() && !c.estRevelee()){
+                    return false;
+                }
+            }
         }
+        return true;
     }
 }
