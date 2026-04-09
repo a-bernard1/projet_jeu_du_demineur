@@ -37,6 +37,12 @@ public class EtatCase{
         }
     }
 
+    public boolean estMarquee(){
+        if(estMarquee){
+            return true;
+        } else return false;
+    }
+
     public void soupconner(){
         if(!estMarquee && !estRevelee){
             estSoupconnee=true;
