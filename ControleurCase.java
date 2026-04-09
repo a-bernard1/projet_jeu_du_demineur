@@ -1,8 +1,8 @@
 import java.awt.Color;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
-public class ControleurCase implements ActionListener{
+public class ControleurCase implements MouseListener{
     private Grille grille;
     private Case[][] cases;
     private int x, y;
@@ -14,13 +14,27 @@ public class ControleurCase implements ActionListener{
         this.y = y;
     }
 
-    public void actionPerformed(ActionEvent e){
-        grille.montrer(x, y);
-        if(grille.aGagne()){
-            fenetreResultat.afficher("Gagne", true);
+    @Override
+    public void mousePressed(MouseEvent e){
+        if(e.getButton()==MouseEvent.BUTTON1){
+            grille.montrer(x, y);
+            if(grille.aGagne()){
+                fenetreResultat.afficher("Gagne", true);
+            }
+        } else if(e.getButton()==MouseEvent.BUTTON3){
+            grille.Marquer(x, y);
         }
         rafraichir();
     }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {}
+    @Override
+    public void mouseReleased(MouseEvent e) {}
+    @Override
+    public void mouseEntered(MouseEvent e) {}
+    @Override
+    public void mouseExited(MouseEvent e) {}
 
     private void rafraichir(){
         for(int i=0; i<cases.length; i++){
@@ -32,9 +46,19 @@ public class ControleurCase implements ActionListener{
                     if(e.estMine()){
                         c.setBackground(Color.RED);
                     } else {
-                        c.setText(String.valueOf(e.nbMines()));
+                        if(e.nbMines()==0){
+                            c.setText("");
+                        }else{
+                            c.setText(String.valueOf(e.nbMines()));
+                        }
                         c.setBackground(Color.WHITE);
                     }
+                } else if(e.estMarquee()){
+                    c.setBackground(Color.ORANGE);
+                    c.setText("!");
+                } else if(e.estSoupconnee()){
+                    c.setBackground(Color.YELLOW);
+                    c.setText("?");
                 } else {
                     c.setText("");
                     c.setBackground(Color.GRAY);
