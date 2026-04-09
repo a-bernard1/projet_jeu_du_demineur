@@ -40,17 +40,14 @@ public class Grille{
         if(i<0 || i>=nbLignes || j<0 || j>=nbColonnes){return;}
         EtatCase c = grille[i][j];
 
-        if(c.estRevelee()){
+        if(c.estRevelee()||c.estMarquee()){
             return;
         }
         c.reveler();
 
         if(c.estMine()){
             fenetreResultat.afficher("Perdu", true);
-        }else 
-        
-        if(c.nbMines()>0){
-        }else{
+        }else if(c.nbMines()==0){
             for(int a = -1; a<=1; a++){
                 for(int b=-1; b<=1; b++){
 
@@ -74,5 +71,19 @@ public class Grille{
             }
         }
         return true;
+    }
+
+    public void Marquer(int x, int y){
+        EtatCase c = grille[x][y];
+
+        if(c.estRevelee()){
+            return;
+        }else if(!c.estMarquee() && !c.estSoupconnee()){
+            c.marquer();
+        } else if(c.estMarquee()){
+            c.soupconner();
+        } else if(c.estSoupconnee()){
+            c.vider();
+        }
     }
 }
