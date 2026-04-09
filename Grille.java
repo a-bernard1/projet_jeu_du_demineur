@@ -17,6 +17,14 @@ public class Grille{
         }
     }
 
+    public int getLignes(){
+        return nbLignes;
+    }
+
+    public int getColonnes(){
+        return nbColonnes;
+    }
+
     public void placement(){
         int nbMinesAPlacer = nbMines;   
         while(nbMinesAPlacer>0){
