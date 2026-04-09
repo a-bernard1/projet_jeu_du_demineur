@@ -27,7 +27,7 @@ public class Jeu{
             for(int j=0; j<colonnes; j++){
                 Case c = new Case();
                 ControleurCase controleurCase = new ControleurCase(grille, cases, i, j);
-                c.addActionListener(controleurCase);
+                c.addMouseListener(controleurCase);
                 c.x = i;
                 c.y = j;
 
