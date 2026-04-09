@@ -38,14 +38,23 @@ public class EtatCase{
     }
 
     public boolean estMarquee(){
-        if(estMarquee){
-            return true;
-        } else return false;
+        return estMarquee;
     }
 
     public void soupconner(){
-        if(!estMarquee && !estRevelee){
+        if(estMarquee){
+            estMarquee=false;
             estSoupconnee=true;
         }
+    }
+
+    public void vider(){
+        if (estSoupconnee){
+            estSoupconnee=false;
+        }
+    }
+
+    public boolean estSoupconnee(){
+        return estSoupconnee;
     }
 }
