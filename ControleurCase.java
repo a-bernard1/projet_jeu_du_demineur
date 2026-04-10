@@ -18,7 +18,10 @@ public class ControleurCase implements MouseListener{
     public void mousePressed(MouseEvent e){
         if(e.getButton()==MouseEvent.BUTTON1){
             grille.montrer(x, y);
-            if(grille.aGagne()){
+            if(grille.getEstGagne()==-1){
+                fenetreResultat.afficher("Perdu", true);
+            }
+            if(grille.aGagne()==1){
                 fenetreResultat.afficher("Gagne", true);
             }
         } else if(e.getButton()==MouseEvent.BUTTON3){
