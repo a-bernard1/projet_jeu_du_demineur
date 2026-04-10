@@ -101,4 +101,16 @@ public class Grille{
             c.vider();
         }
     }
+
+    public int getNbMinesRestantes() {
+        int nbMarquees = 0;
+        for(int  i = 0; i<nbLignes; i++){
+            for(int j = 0; j<nbColonnes; j++){
+                if(grille[i][j].estMarquee()) {
+                    nbMarquees++;
+                }
+            }
+        }
+        return nbMines - nbMarquees;
+    }
 }
