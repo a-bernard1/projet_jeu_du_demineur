@@ -19,7 +19,8 @@ OFILES = Main.class \
 		 ControleurCase.class \
 		 configTaille.class \
 		 fenetreResultat.class \
-		 compteurMines.class
+		 compteurMines.class \
+		 ControleurResultat.class
 
 # Règle par défaut
 but : ${OFILES}
@@ -67,6 +68,9 @@ fenetreResultat.class : ControleurCase.java
 	${JC} ControleurCase.java
 
 compteurMines.class : ControleurCase.java
+	${JC} ControleurCase.java
+
+ControleurResultat.class : ControleurCase.java
 	${JC} ControleurCase.java
 # Lancer le programme
 # On précise le "classpath" (le point .) pour dire à Java de chercher ici
