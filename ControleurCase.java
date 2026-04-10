@@ -2,16 +2,20 @@ import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import javax.swing.JLabel;
+
 public class ControleurCase implements MouseListener{
     private Grille grille;
     private Case[][] cases;
     private int x, y;
+    private JLabel labelMines;
     
-    public ControleurCase(Grille grille, Case[][] cases, int x, int y){
+    public ControleurCase(Grille grille, Case[][] cases, int x, int y, JLabel labelMines){
         this.grille = grille;
         this.cases = cases;
         this.x = x;
         this.y = y;
+        this.labelMines = labelMines;
     }
 
     @Override
@@ -68,5 +72,6 @@ public class ControleurCase implements MouseListener{
                 }
             }
         }
+        labelMines.setText("Mines restantes :" + grille.getNbMinesRestantes());
     }
 }
