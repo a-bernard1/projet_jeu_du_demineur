@@ -11,12 +11,13 @@ public class ControleurValider implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
-        int nbCases = configTaille.nbLignes * configTaille.nbColonnes;
+        int nbCases = configTaille.nbLignes * configTaille.nbColonnes-1;
         if(configTaille.nbMines > nbCases) {
             fenetreResultat.afficher("Le nombre de mine(" + configTaille.nbMines + ") dépasse le nombre de cases (" + nbCases + ")", false);
         } else {
             win1.setVisible(false);
             Jeu pageJeu = new Jeu(configTaille.nbLignes, configTaille.nbColonnes, configTaille.nbMines);
+            pageJeu.lancerJeu();
             pageJeu.getFrame().setVisible(true);
         }
     }
