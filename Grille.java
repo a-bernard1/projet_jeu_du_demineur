@@ -3,6 +3,7 @@ public class Grille{
     private int nbColonnes;
     private EtatCase grille[][];
     private int nbMines;
+    private int estGagne;
 
     public Grille(int nbLignes, int nbColonnes, int nbMines){
         this.nbLignes = nbLignes;
@@ -54,7 +55,7 @@ public class Grille{
         c.reveler();
 
         if(c.estMine()){
-            fenetreResultat.afficher("Perdu", true);
+            estGagne = -1;
         }else if(c.nbMines()==0){
             for(int a = -1; a<=1; a++){
                 for(int b=-1; b<=1; b++){
@@ -69,16 +70,22 @@ public class Grille{
         }
     }
 
-    public boolean aGagne(){
+    public int getEstGagne(){
+        return estGagne;
+    }
+
+    public int aGagne(){
         for(int i=0; i<nbLignes; i++){
             for(int j=0; j<nbColonnes; j++){
                 EtatCase c = grille[i][j];
                 if(!c.estMine() && !c.estRevelee()){
-                    return false;
+                    estGagne = 0;
+                    return estGagne;
                 }
             }
         }
-        return true;
+        estGagne = 1;
+        return estGagne;
     }
 
     public void Marquer(int x, int y){
