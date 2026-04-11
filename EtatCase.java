@@ -57,4 +57,21 @@ public class EtatCase{
     public boolean estSoupconnee(){
         return estSoupconnee;
     }
+
+
+    public void setNbMines(int n){
+        _nbMinesAutour = n;
+    }
+
+    public void setEstRevelee(boolean b){
+        estRevelee = b;
+    }
+
+    public void setEstMarquee(boolean b){
+        estMarquee = b;
+    }
+
+    public void setEstSoupconnee(boolean b){
+        estSoupconnee = b;
+    }
 }
