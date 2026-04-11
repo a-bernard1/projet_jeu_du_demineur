@@ -2,6 +2,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.FileReader;
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 
 
 public class Sauvegarde{
@@ -43,13 +44,14 @@ public class Sauvegarde{
     }
 
     public Grille charger(){
+        Grille grille = null;
         try{
             FileReader fr = new FileReader("save.dat");
             BufferedReader br = new BufferedReader(fr);
 
             String line = br.readLine();
             if(line == null){
-                System.err.println("Fichier vide");
+                FenetreAfficheMessageErreur.afficher("Fichier vide, veuillez jouer une partie");
                 return null;
             }
 
@@ -58,13 +60,13 @@ public class Sauvegarde{
             int colonnes = Integer.parseInt(dimensions[1]);
             int nbMines = Integer.parseInt(dimensions[2]);
 
-            Grille grille = new Grille(lignes, colonnes, nbMines);
+            grille = new Grille(lignes, colonnes, nbMines);
 
             
             for(int i=0; i<lignes; i++){
                 line = br.readLine();
                 if(line == null){
-                    System.err.println("Fichier incomplet");
+                    FenetreAfficheMessageErreur.afficher("Fichier de sauvegarde corrompu");
                     return null;
                 }
 
@@ -82,12 +84,15 @@ public class Sauvegarde{
                     c.setEstSoupconnee(valeurs[4].equals("1"));
                 }
             }
-
+            
             br.close();
             return grille;
 
-        } catch(IOException e){
-            e.printStackTrace();
+        } catch(FileNotFoundException e){
+            FenetreAfficheMessageErreur.afficher("Attention aucune sauvegarde trouvé, veuillez jouer une partie");
+            return null;
+        } catch (IOException e){
+            FenetreAfficheMessageErreur.afficher("Erreur de lecture");
             return null;
         }
     }
