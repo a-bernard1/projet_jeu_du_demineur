@@ -4,6 +4,7 @@ public class Grille{
     private EtatCase grille[][];
     private int nbMines;
     private int estGagne;
+    private boolean partieTerminee = false;
 
     public Grille(int nbLignes, int nbColonnes, int nbMines){
         this.nbLignes = nbLignes;
@@ -116,5 +117,23 @@ public class Grille{
             }
         }
         return nbMines - nbMarquees;
+    }
+
+    public boolean estPartieTerminee(){
+        return partieTerminee;
+    }
+
+    public void setPartieTerminee(boolean b){
+        partieTerminee = b;
+    }
+
+    public void revelerToutesLesMines(){
+        for(int i=0; i<nbLignes; i++){
+            for(int j=0; j<nbColonnes; j++){
+                if(grille[i][j].estMine()){
+                    grille[i][j].setEstRevelee(true);
+                }
+            }
+        }
     }
 }
