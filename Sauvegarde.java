@@ -1,25 +1,20 @@
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.FileReader;
+import java.io.BufferedReader;
 
 
 public class Sauvegarde{
 
-    private Grille grille;
-
-    public Sauvegarde(Grille grille){
-        this.grille = grille;
-    }
-
-    public void sauvegarder(){
-            System.out.println("test save1");
+    public void sauvegarder(Grille grille){
         try{
-            System.out.println("test save2");
             FileWriter fw = new FileWriter("save.dat");
 
             int lignes = grille.getLignes();
             int colonnes = grille.getColonnes();
+            int nbMines = grille.getMines();
 
-            fw.write(lignes + " " + colonnes + "\n");
+            fw.write(lignes + " " + colonnes + " " + nbMines + "\n");
 
             for(int i=0;i<lignes;i++){
                 for(int j=0;j<colonnes;j++){
@@ -44,6 +39,56 @@ public class Sauvegarde{
 
         } catch(IOException e){
             e.printStackTrace();
+        }
+    }
+
+    public Grille charger(){
+        try{
+            FileReader fr = new FileReader("save.dat");
+            BufferedReader br = new BufferedReader(fr);
+
+            String line = br.readLine();
+            if(line == null){
+                System.err.println("Fichier vide");
+                return null;
+            }
+
+            String[] dimensions = line.split(" ");
+            int lignes = Integer.parseInt(dimensions[0]);
+            int colonnes = Integer.parseInt(dimensions[1]);
+            int nbMines = Integer.parseInt(dimensions[2]);
+
+            Grille grille = new Grille(lignes, colonnes, nbMines);
+
+            
+            for(int i=0; i<lignes; i++){
+                line = br.readLine();
+                if(line == null){
+                    System.err.println("Fichier incomplet");
+                    return null;
+                }
+
+                String[] cases = line.split("\\|");
+
+                for(int j=0; j<colonnes; j++){
+                    String[] valeurs = cases[j].trim().split(" ");
+
+                    EtatCase c = grille.getEtatCase()[i][j];
+
+                    c.setEstMine(valeurs[0].equals("1"));
+                    c.setNbMines(Integer.parseInt(valeurs[1]));
+                    c.setEstRevelee(valeurs[2].equals("1"));
+                    c.setEstMarquee(valeurs[3].equals("1"));
+                    c.setEstSoupconnee(valeurs[4].equals("1"));
+                }
+            }
+
+            br.close();
+            return grille;
+
+        } catch(IOException e){
+            e.printStackTrace();
+            return null;
         }
     }
 }
