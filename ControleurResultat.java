@@ -6,11 +6,13 @@ import javax.swing.JFrame;
 
 public class ControleurResultat implements ActionListener {
     private JFrame win1;
+    private Jeu jeu;
     private JButton btnRejouer;
     private JButton btnQuitter;
 
-    public ControleurResultat(JFrame window1, JButton btnRejouer, JButton btnQuitter) {
-        this.win1 = window1;
+    public ControleurResultat(JFrame win1, JButton btnRejouer, JButton btnQuitter, Jeu jeu) {
+        this.win1 = win1;
+        this.jeu = jeu;
         this.btnRejouer = btnRejouer;
         this.btnQuitter = btnQuitter;
     }
@@ -19,14 +21,9 @@ public class ControleurResultat implements ActionListener {
         if (e.getSource() == btnQuitter) {
             System.exit(0);
         } else if (e.getSource() == btnRejouer) {
-            this.win1.dispose();
-
-            if(Jeu.fenetre != null) {
-                Jeu.fenetre.dispose();
-                Jeu.fenetre = null;
-            }
-
-            Accueil pageAccueil = new Accueil();
+            win1.dispose();
+            jeu.getFrame().dispose();
+            new Accueil();
         }
     }
 }
