@@ -9,7 +9,7 @@ OFILES = Main.class \
          Accueil.class \
          Case.class \
          Jeu.class \
-		 Taille.class \
+		 AffichageChoixTaille.class \
 		 ControleurPageTaille.class \
 		 ControleurAccueil.class \
 		 configFenetre.class \
@@ -40,8 +40,8 @@ Case.class : Case.java
 Jeu.class : Jeu.java
 	${JC} Jeu.java
 
-Taille.class : Taille.java
-	${JC} Taille.java
+AffichageChoixTaille.class : AffichageChoixTaille.java
+	${JC} AffichageChoixTaille.java
 
 ControleurPageTaille.class : ControleurPageTaille.java
 	${JC} ControleurPageTaille.java
