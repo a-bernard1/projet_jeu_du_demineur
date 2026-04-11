@@ -4,19 +4,30 @@ import javax.swing.JFrame;
 
 public class ControleurValider implements ActionListener {
     private JFrame win1;
+    private ControleurPageTaille ctrlLigne;
+    private ControleurPageTaille ctrlColonne;
+    private ControleurPageTaille ctrlMines;
 
 
-    ControleurValider(JFrame win1, ControleurPageTaille controleurLigne, ControleurPageTaille controleurColonne, ControleurPageTaille controleurMines) {
+    public ControleurValider(JFrame win1, ControleurPageTaille ctrlLigne, ControleurPageTaille ctrlColonne,ControleurPageTaille ctrlMines) {
         this.win1 = win1;
+        this.ctrlLigne = ctrlLigne;
+        this.ctrlColonne = ctrlColonne;
+        this.ctrlMines = ctrlMines;
     }
 
     public void actionPerformed(ActionEvent e) {
-        int nbCases = configTaille.nbLignes * configTaille.nbColonnes-1;
-        if(configTaille.nbMines > nbCases) {
-            FenetreAfficheMessageErreur.afficher("Le nombre de mine(" + configTaille.nbMines + ") dépasse le nombre de cases (" + nbCases + ")");
+        int nbLignes = ctrlLigne.getValeur();
+        int nbColonnes = ctrlColonne.getValeur();
+        int nbMines = ctrlMines.getValeur();
+
+        int nbCases = nbLignes * nbColonnes-1;
+
+        if(nbMines > nbCases) {
+            FenetreAfficheMessageErreur.afficher("Le nombre de mine(" + nbMines + ") dépasse le nombre de cases (" + nbCases + ")");
         } else {
             win1.setVisible(false);
-            Jeu pageJeu = new Jeu(configTaille.nbLignes, configTaille.nbColonnes, configTaille.nbMines);
+            Jeu pageJeu = new Jeu(nbLignes, nbColonnes, nbMines);
             pageJeu.lancerJeu();
             pageJeu.getFrame().setVisible(true);
         }
