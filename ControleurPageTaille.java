@@ -19,13 +19,12 @@ public class ControleurPageTaille implements ActionListener {
         labelValeur.setText(String.valueOf(valeur));
 
         if(type == "Ligne") {
-        configTaille.nbLignes = valeur;
-    } else if (type == "Colonne") {
-        configTaille.nbColonnes = valeur;
-    } else {
-        configTaille.nbMines = valeur;
-    }
-
+            configTaille.nbLignes = valeur;
+        } else if (type == "Colonne") {
+            configTaille.nbColonnes = valeur;
+        } else {
+            configTaille.nbMines = valeur;
+        }
     }
 
     
@@ -36,7 +35,7 @@ public class ControleurPageTaille implements ActionListener {
                 if(valeur < nbCasesMax) {
                     valeur++;
                 } else {
-                    fenetreResultat.afficher("Le nombre ne peut pas dépasser" + nbCasesMax, false);
+                    FenetreAfficheMessageErreur.afficher("Le nombre ne peut pas dépasser" + nbCasesMax);
                 }
             } else {
              if (valeur < 30) {
@@ -45,7 +44,8 @@ public class ControleurPageTaille implements ActionListener {
                     valeur = 4;
                 }
             }
-        } else if (e.getSource() == btnMoins) {if (e.getSource() == btnMoins)
+        } else if (e.getSource() == btnMoins){
+            if (e.getSource() == btnMoins)
             if(type == "Mine") {
                 if (valeur > 1) {
                     valeur--;
