@@ -21,7 +21,7 @@ public class Accueil {
         panelAccueil.setLayout(new GridLayout(3, 1, 0, 15));
 
 
-        Taille pageTaille = new Taille();
+        AffichageChoixTaille pageTaille = new AffichageChoixTaille();
 
         JButton btnjouer = new JButton("Jouer");
         ControleurAccueil controleurJeu = new ControleurAccueil(fenetre, pageTaille.getFrame(), "JOUER");
