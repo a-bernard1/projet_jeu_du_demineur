@@ -29,6 +29,8 @@ public class Accueil {
         btnjouer.setPreferredSize(new Dimension(200, 50));
 
         JButton btnreprendre = new JButton("Reprendre");
+        ControleurAccueil controleurReprendre = new ControleurAccueil(fenetre, pageTaille.getFrame(), "REPRENDRE");
+        btnreprendre.addActionListener(controleurReprendre);
         btnreprendre.setPreferredSize(new Dimension(200, 50));
 
         JButton btnquitter = new JButton("Quitter");
