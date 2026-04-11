@@ -23,7 +23,16 @@ public class ControleurCase implements MouseListener{
     @Override
     public void mousePressed(MouseEvent e){
         if(e.getButton()==MouseEvent.BUTTON1){
+            if(grille.estPartieTerminee()){
+                return;
+            }
             grille.montrer(x, y);
+
+            if(grille.getEtatCase()[x][y].estMine()){
+                grille.setPartieTerminee(true);
+                grille.revelerToutesLesMines();
+            }
+
             if(grille.getEstGagne()==-1){
                 fenetreResultat fn1 = new fenetreResultat("Perdu", true, jeu);
                 fn1.afficher();
