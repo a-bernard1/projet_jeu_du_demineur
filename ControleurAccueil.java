@@ -16,12 +16,21 @@ public class ControleurAccueil implements ActionListener{
     }
 
     public void actionPerformed(ActionEvent e){
-        if(choix=="JOUER"){
+        if(choix.equals("JOUER")){
             System.out.println("lance le jeu");
             win1.setVisible(false);
             win2.setVisible(true);
-        } else if(choix=="REPRENDRE"){
-        }else if(choix=="QUITTER"){
+        } else if(choix.equals("REPRENDRE")){
+            Sauvegarde sauvegarde = new Sauvegarde();
+            // charger
+            Grille g = sauvegarde.charger();
+            if(g != null){
+                Jeu jeu = new Jeu(0,0,0);
+                jeu.chargerJeu(g);
+
+                win1.setVisible(false);
+            }else {System.err.println("PAS DE SAUVREGARDE");}
+        }else if(choix.equals("QUITTER")){
             System.out.println("quitter");
             System.exit(0);
         };
