@@ -16,60 +16,22 @@ public class ControleurPageTaille implements ActionListener {
         this.labelValeur = labelValeur;
         this.valeur = valeurInitiale;
         this.type = type;
-        labelValeur.setText(String.valueOf(valeur));
 
-        if(type == "Ligne") {
-            configTaille.nbLignes = valeur;
-        } else if (type == "Colonne") {
-            configTaille.nbColonnes = valeur;
-        } else {
-            configTaille.nbMines = valeur;
-        }
+
+        labelValeur.setText(String.valueOf(valeur));
     }
 
     
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == btnPlus) {
-            if (type == "Mine") {
-                int nbCasesMax = configTaille.nbLignes * configTaille.nbColonnes;
-                if(valeur < nbCasesMax) {
-                    valeur++;
-                } else {
-                    FenetreAfficheMessageErreur.afficher("Le nombre ne peut pas dépasser" + nbCasesMax);
-                }
-            } else {
-             if (valeur < 30) {
-                valeur++;
-                } else {
-                    valeur = 4;
-                }
-            }
-        } else if (e.getSource() == btnMoins){
-            if (e.getSource() == btnMoins)
-            if(type == "Mine") {
-                if (valeur > 1) {
-                    valeur--;
-                } else {
-                    valeur = 1;
-                }
-            } else {
-                if (valeur > 4) {
-                    valeur--;
-                } else {
-                    valeur = 30;
-                }
-            }
+            valeur++;
+            if(valeur>30)valeur=4;
+        } else if (e.getSource() == btnMoins) {
+            valeur--;
+            if(valeur<4)valeur=30;
         }
 
-         if(type == "Ligne") {
-            configTaille.nbLignes = valeur;
-         } else if (type == "Colonne") {
-            configTaille.nbColonnes = valeur;
-         } else {
-            configTaille.nbMines = valeur;
-         }
-
-        labelValeur.setText("" + valeur);
+        labelValeur.setText(String.valueOf(valeur));
     }
     
     public int getValeur() {
