@@ -7,34 +7,43 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class fenetreResultat {
+    private String message;
+    private boolean quitter;
+    private Jeu jeu;
+
+    public fenetreResultat(String message, boolean quitter, Jeu jeu){
+        this.message = message;
+        this.quitter = quitter;
+        this.jeu = jeu;
+    }
     
-    public static void afficher(String message, boolean quitter) {
-        JFrame f = new JFrame();
-        f.setSize(400, 150);
-        f.setLocation(400, 400);
-        f.setLayout(new BorderLayout());
+    public void afficher() {
+        JFrame fenetre = new JFrame();
+        fenetre.setSize(400, 150);
+        fenetre.setLocation(400, 400);
+        fenetre.setLayout(new BorderLayout());
 
         JLabel label = new JLabel(message, JLabel.CENTER);
-        f.add(label, BorderLayout.CENTER);
+        fenetre.add(label, BorderLayout.CENTER);
 
         if(quitter) {
-            f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
             JPanel panelBoutons = new JPanel(new FlowLayout());
             JButton btnRejouer = new JButton("Rejouer");
             JButton btnQuitter = new JButton("Quitter");
 
-            ControleurResultat controleurRes = new ControleurResultat(f, btnRejouer, btnQuitter);
+            ControleurResultat controleurRes = new ControleurResultat(fenetre, btnRejouer, btnQuitter, jeu);
             btnRejouer.addActionListener(controleurRes);
             btnQuitter.addActionListener(controleurRes);
 
             panelBoutons.add(btnRejouer);
             panelBoutons.add(btnQuitter);
-            f.add(panelBoutons, BorderLayout.SOUTH);
+            fenetre.add(panelBoutons, BorderLayout.SOUTH);
         } else {
-            f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            fenetre.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         }
     
-        f.setVisible(true);
+        fenetre.setVisible(true);
     }
 }
