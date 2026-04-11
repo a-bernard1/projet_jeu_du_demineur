@@ -9,13 +9,15 @@ public class ControleurCase implements MouseListener{
     private Case[][] cases;
     private int x, y;
     private JLabel labelMines;
+    private Jeu jeu;
     
-    public ControleurCase(Grille grille, Case[][] cases, int x, int y, JLabel labelMines){
+    public ControleurCase(Grille grille, Case[][] cases, int x, int y, JLabel labelMines, Jeu jeu){
         this.grille = grille;
         this.cases = cases;
         this.x = x;
         this.y = y;
         this.labelMines = labelMines;
+        this.jeu = jeu;
     }
 
     @Override
@@ -23,10 +25,12 @@ public class ControleurCase implements MouseListener{
         if(e.getButton()==MouseEvent.BUTTON1){
             grille.montrer(x, y);
             if(grille.getEstGagne()==-1){
-                fenetreResultat.afficher("Perdu", true);
+                fenetreResultat fn1 = new fenetreResultat("Perdu", true, jeu);
+                fn1.afficher();
             }
             if(grille.aGagne()==1){
-                fenetreResultat.afficher("Gagne", true);
+                fenetreResultat fn2 = new fenetreResultat("Gagné", true, jeu);
+                fn2.afficher();
             }
         } else if(e.getButton()==MouseEvent.BUTTON3){
             grille.Marquer(x, y);
