@@ -5,10 +5,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class Taille {
+public class AffichageChoixTaille {
     private JFrame fenetre = new JFrame();
 
-    public Taille() {
+    public AffichageChoixTaille() {
         fenetre.setSize(configFenetre.LARGEUR, configFenetre.HAUTEUR);
         fenetre.setLocation(100, 100);
         fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
