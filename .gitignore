@@ -5,6 +5,9 @@
 # Log file
 *.log
 
+# fichier de sauvegrarde d'une partie
+*.dat
+
 # BlueJ files
 *.ctxt
 
