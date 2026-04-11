@@ -7,12 +7,33 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+/**
+* Classe principale du jeu
+* 
+* Cette classe est responsable de :
+* - l'initialisation du jeu
+* - la gestion de la grille (modèle)
+* - la construction de l'interface graphique
+* 
+* Elle joue le rôle de point d'entrée et de coordination entre
+* le modèle (Grille) et la vue (Swing)
+*/
+
 public class Jeu{
     private JFrame fenetre = new JFrame();
     private Grille grille;
     private int lignes;
     private int colonnes;
     private int nbMines;
+
+
+    /**
+    * Initialise une nouvelle instance du jeu
+    *
+    * @param lignes nombre de lignes de la grille
+    * @param colonnes nombre de colonnes de la grille
+    * @param nbMines nombre de mines à placer
+    */
 
     public  Jeu(int lignes, int colonnes, int nbMines){
         fenetre = new JFrame();
@@ -25,6 +46,13 @@ public class Jeu{
         fenetre.setLayout(new BorderLayout());
     }
 
+    /**
+    * Lance une nouvelle partie
+    * 
+    * Initialise la grille, place les mines et calcule les indices
+    * des cases, puis construit l'interface graphique
+    */
+
     public void lancerJeu(){
 
         grille =  new Grille(lignes, colonnes, nbMines);
@@ -36,31 +64,16 @@ public class Jeu{
 
 
         construireInterface();
-        /*        JPanel panelHaut = new JPanel();
-
-JLabel labelMines = new JLabel("Mines restantes :" + nbMines);
-        panelHaut.add(labelMines);
-
-        /*JPanel panelGrille = new JPanel();
-        panelGrille.setLayout(new GridLayout(lignes, colonnes));
-
-        for(int i=0; i<lignes; i++){
-            for(int j=0; j<colonnes; j++){
-                Case c = new Case();
-                ControleurCase controleurCase = new ControleurCase(grille, cases, i, j, labelMines, this);
-                c.addMouseListener(controleurCase);
-                c.x = i;
-                c.y = j;
-
-                c.setBackground(Color.GRAY);
-                cases[i][j] = c;
-                panelGrille.add(c);
-            }
-        }
-
-        fenetre.add(panelHaut, BorderLayout.NORTH);
-        fenetre.add(panelGrille, BorderLayout.CENTER);*/
     }
+
+    /**
+    * Charge une partie existante
+    * 
+    * Met à jour la grille et reconstruit l'interface graphique
+    * en fonction de l'état sauvegardé
+    *
+    * @param grilleACharger grille représentant l'état sauvegardé d'une partie
+    */
 
     public void chargerJeu(Grille grilleACharger){
         this.grille = grilleACharger;
@@ -69,6 +82,17 @@ JLabel labelMines = new JLabel("Mines restantes :" + nbMines);
 
         construireInterface();
     }
+
+
+    /**
+    * Construit et initialise l'interface graphique du jeu
+    * 
+    * Crée :
+    * - un panneau supérieur avec bouton de sauvegarde et compteur de mines
+    * - une grille de cases interactives
+    * 
+    * Associe chaque case à son contrôleur pour gérer les interactions utilisateur.
+    */
 
     private void construireInterface(){
         fenetre.setLayout(new BorderLayout());
@@ -126,6 +150,10 @@ JLabel labelMines = new JLabel("Mines restantes :" + nbMines);
         fenetre.add(panelGrille, BorderLayout.CENTER);
         fenetre.setVisible(true);
     }
+
+    /**
+    * @return la fenêtre principale du jeu
+    */
 
     public JFrame getFrame(){
         return fenetre;

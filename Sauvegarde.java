@@ -5,8 +5,26 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 
 
-public class Sauvegarde{
+/**
+* Gère la sauvegarde et le chargement d'une partie
+* 
+* Les données de la grille sont stockées dans un fichier texte ("save.dat")
+* contenant les dimensions de la grille, le nombre de mines, ainsi que
+* l'état de chaque case.
+*/
 
+public class Sauvegarde{
+    /**
+    * Sauvegarde l'état actuel de la grille dans un fichier
+    * 
+    * Le fichier contient :
+    * - les dimensions de la grille
+    * - le nombre de mines
+    * - les informations de chaque case (mine, nombre de mines autour, état révélé, marqué ou soupçonné)
+    *
+    * @param grille grille à sauvegarder
+    */
+    
     public void sauvegarder(Grille grille){
         try{
             FileWriter fw = new FileWriter("save.dat");
@@ -42,6 +60,17 @@ public class Sauvegarde{
             e.printStackTrace();
         }
     }
+
+
+    /**
+    * Charge une grille à partir du fichier de sauvegarde
+    * 
+    * Reconstitue la grille en lisant les informations stockées dans le fichier "save.dat"
+    * 
+    * En cas d'erreur (fichier absent, vide ou corrompu), un message est affiché et la méthode retourne null.
+    *
+    * @return la grille chargée, ou null si une erreur survient
+    */
 
     public Grille charger(){
         Grille grille = null;
