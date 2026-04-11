@@ -11,7 +11,9 @@ public class Sauvegarde{
     }
 
     public void sauvegarder(){
+            System.out.println("test save1");
         try{
+            System.out.println("test save2");
             FileWriter fw = new FileWriter("save.dat");
 
             int lignes = grille.getLignes();
