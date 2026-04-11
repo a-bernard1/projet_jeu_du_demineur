@@ -26,6 +26,10 @@ public class Grille{
         return nbColonnes;
     }
 
+    public int getMines(){
+        return nbMines;
+    }
+
     public void placement(){
         int nbMinesAPlacer = nbMines;   
         while(nbMinesAPlacer>0){
