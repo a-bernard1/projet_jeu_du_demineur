@@ -8,7 +8,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class Jeu{
-    public static JFrame fenetre = new JFrame();
+    private JFrame fenetre = new JFrame();
     private Grille grille;
     private int lignes;
     private int colonnes;
@@ -30,22 +30,6 @@ public class Jeu{
         fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         fenetre.setLayout(new BorderLayout());
 
-        JPanel panelHaut = new JPanel();
-
-        JButton btnQuitter = new JButton("Quitter");
-        ControleurAccueil controleurQuitter = new ControleurAccueil(fenetre, fenetre, "QUITTER");
-        btnQuitter.addActionListener(controleurQuitter);
-        panelHaut.add(btnQuitter);
-
-        JButton btnSauvegarder = new JButton("Sauvegarder");
-        panelHaut.add(btnSauvegarder);
-
-        JLabel labelMines = new JLabel("Mines restantes :" + nbMines);
-        panelHaut.add(labelMines);
-
-        JPanel panelGrille = new JPanel();
-        panelGrille.setLayout(new GridLayout(lignes, colonnes));
-
         grille =  new Grille(lignes, colonnes, nbMines);
         grille.placement();
 
@@ -54,12 +38,31 @@ public class Jeu{
         compteurMines compt = new compteurMines(grille.getEtatCase(), lignes, colonnes);
         compt.calculer();
 
+        JPanel panelHaut = new JPanel();
+
+        JButton btnQuitter = new JButton("Quitter");
+        ControleurMenu controleurQuitter = new ControleurMenu(grille, "QUITTER");
+        btnQuitter.addActionListener(controleurQuitter);
+        panelHaut.add(btnQuitter);
+
+        JButton btnSauvegarder = new JButton("Sauvegarder");
+        ControleurMenu controleurSauvegarder = new ControleurMenu(grille, "SAUVEGARDER");
+        btnSauvegarder.addActionListener(controleurSauvegarder);
+        panelHaut.add(btnSauvegarder);
+
+        JLabel labelMines = new JLabel("Mines restantes :" + nbMines);
+        panelHaut.add(labelMines);
+
+        JPanel panelGrille = new JPanel();
+        panelGrille.setLayout(new GridLayout(lignes, colonnes));
+
         for(int i=0; i<lignes; i++){
             for(int j=0; j<colonnes; j++){
                 Case c = new Case();
-                ControleurCase controleurCase = new ControleurCase(grille, cases, i, j, labelMines);
-                c.addMouseListener(controleurCase);btnQuitter.addActionListener(controleurQuitter);
-        panelHaut.add(btnQuitter);
+                ControleurCase controleurCase = new ControleurCase(grille, cases, i, j, labelMines, this);
+                c.addMouseListener(controleurCase);
+                btnQuitter.addActionListener(controleurQuitter);
+                panelHaut.add(btnQuitter);
                 c.x = i;
                 c.y = j;
 
