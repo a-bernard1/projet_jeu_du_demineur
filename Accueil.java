@@ -5,8 +5,23 @@ import java.awt.GridLayout;
 
 import javax.swing.*;
 
+/**
+ * La classe <code>Accueil</code> représente la fenêtre principale du menu d'accueil du jeu.
+ * 
+ * Elle propose trois actions à l'utilisateur :
+ * démarrer une nouvelle partie, reprendre une partie sauvegardée, ou quitter l'application.
+ * 
+ * @version 1.0
+ * @author Antoine
+ */
 public class Accueil {
 
+    /**
+     * Construit et affiche la fenêtre d'accueil.
+     * 
+     * Initialise les boutons "Jouer", "Reprendre" et "Quitter",
+     * et leur associe les contrôleurs correspondants.
+     */
     public Accueil() {
         JFrame fenetre = new JFrame();
         fenetre.setSize(configFenetre.LARGEUR, configFenetre.HAUTEUR);
