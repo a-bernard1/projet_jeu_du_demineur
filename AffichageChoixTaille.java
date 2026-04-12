@@ -5,9 +5,29 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+/**
+ * La classe <code>AffichageChoixTaille</code> représente la fenêtre de configuration
+ * d'une nouvelle partie de démineur.
+ * 
+ * Elle permet à l'utilisateur de choisir le nombre de lignes, de colonnes
+ * et de mines de la grille avant de lancer le jeu.
+ * 
+ * @version 1.0
+ * @author Antoine
+ */
 public class AffichageChoixTaille {
+
+    /**
+     * La fenêtre graphique associée à cette page de configuration.
+     */
     private JFrame fenetre = new JFrame();
 
+    /**
+     * Construit et initialise la fenêtre de choix de la taille de la grille.
+     * 
+     * Crée les contrôles permettant de sélectionner le nombre de lignes (entre 4 et 30),
+     * de colonnes (entre 4 et 30) et de mines, ainsi qu'un bouton de validation.
+     */
     public AffichageChoixTaille() {
         fenetre.setSize(configFenetre.LARGEUR, configFenetre.HAUTEUR);
         fenetre.setLocation(100, 100);
@@ -89,6 +109,12 @@ public class AffichageChoixTaille {
         fenetre.add(globalPanel, BorderLayout.CENTER);
         }
 
+        
+        /**
+         * Renvoie la fenêtre associée à cette page de configuration.
+         * 
+         * @return la fenêtre graphique de choix de la taille
+         */
         public JFrame getFrame() {
             return fenetre;
         }
